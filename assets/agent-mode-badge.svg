@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="175" height="30" viewBox="0 0 175 30">
+  <rect rx="5" ry="5" width="175" height="30" fill="#FF6C37"/>
+  <g transform="translate(8, 7)">
+    <svg width="16" height="16" viewBox="0 0 16 17">
+      <path d="M8 0l1.796 5.204L15 7l-5.204 1.796L8 14l-1.796-5.204L1 7l5.204-1.796zM13 10l.898 2.602L16 13.5l-2.102.898L13 17l-.898-2.602L10 13.5l2.102-.898z" fill="#FFFFFF" fill-rule="evenodd"/>
+    </svg>
+  </g>
+  <text x="28" y="16" fill="#FFFFFF" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" font-weight="600" dominant-baseline="middle">Open in Postman Agent</text>
+</svg>

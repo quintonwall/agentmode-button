@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postman Button Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      max-width: 760px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1 { margin-bottom: 0.25rem; }
+    h1 span { color: #FF6C37; }
+    .subtitle { color: #666; margin-top: 0; margin-bottom: 2rem; }
+    section { margin-bottom: 3rem; }
+    h2 { border-bottom: 2px solid #f0f0f0; padding-bottom: 0.5rem; }
+    .example {
+      background: #fafafa;
+      border: 1px solid #eee;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+    pre code { color: inherit; background: none; }
+    .attr { color: #9cdcfe; }
+    .val { color: #ce9178; }
+    .tag { color: #569cd6; }
+    .comment { color: #6a9955; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #eee; }
+    th { background: #fafafa; font-weight: 600; }
+    code { background: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <h1><span>Postman</span> Button Demo</h1>
+  <p class="subtitle">An embeddable widget for launching Postman Agent Mode or forking collections from any webpage.</p>
+
+  <!-- ── Agent Mode: Dark Theme (default) ──────────────────────── -->
+  <section>
+    <h2>Agent Mode Button</h2>
+    <p>Injects a pre-written prompt into Postman's Agent Mode. The user lands in Postman with the prompt ready to send.</p>
+
+    <div class="example">
+      <div class="postman-button"
+           data-postman-action="agent/prompt"
+           data-postman-agent-prompt="Build a REST API for a todo app with CRUD endpoints using Node.js and Express. Include error handling and input validation."
+           data-postman-utm-medium="agent-mode-button"
+           data-postman-utm-campaign="demo-page">
+      </div>
+    </div>
+
+    <p><strong>Embed code:</strong></p>
+    <pre><code><span class="comment">&lt;!-- Agent Mode button --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"postman-button"</span>
+     <span class="attr">data-postman-action</span>=<span class="val">"agent/prompt"</span>
+     <span class="attr">data-postman-agent-prompt</span>=<span class="val">"Build a REST API for a todo app with CRUD endpoints"</span>
+     <span class="attr">data-postman-utm-medium</span>=<span class="val">"agent-mode-button"</span>
+     <span class="attr">data-postman-utm-campaign</span>=<span class="val">"my-tutorial"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+  </section>
+
+  <!-- ── Agent Mode: Light Theme + Custom Label ────────────────── -->
+  <section>
+    <h2>Agent Mode — Light Theme, Custom Label</h2>
+    <p>Use <code>data-postman-button-theme="light"</code> and <code>data-postman-button-label</code> to customize appearance.</p>
+
+    <div class="example" style="background: #fff;">
+      <div class="postman-button"
+           data-postman-action="agent/prompt"
+           data-postman-agent-prompt="Test the Stripe Payments API with sample requests for charges, customers, and refunds"
+           data-postman-auto-send="true"
+           data-postman-button-label="Try with Postman AI"
+           data-postman-button-theme="light"
+           data-postman-utm-medium="agent-mode-button"
+           data-postman-utm-campaign="stripe-tutorial">
+      </div>
+    </div>
+
+    <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"postman-button"</span>
+     <span class="attr">data-postman-action</span>=<span class="val">"agent/prompt"</span>
+     <span class="attr">data-postman-agent-prompt</span>=<span class="val">"Test the Stripe Payments API..."</span>
+     <span class="attr">data-postman-auto-send</span>=<span class="val">"true"</span>
+     <span class="attr">data-postman-button-label</span>=<span class="val">"Try with Postman AI"</span>
+     <span class="attr">data-postman-button-theme</span>=<span class="val">"light"</span>
+     <span class="attr">data-postman-utm-medium</span>=<span class="val">"agent-mode-button"</span>
+     <span class="attr">data-postman-utm-campaign</span>=<span class="val">"stripe-tutorial"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+  </section>
+
+  <!-- ── Fork Collection ───────────────────────────────────────── -->
+  <section>
+    <h2>Fork Collection Button</h2>
+    <p>Forks a public collection into the user's Postman workspace.</p>
+
+    <div class="example">
+      <div class="postman-button"
+           data-postman-action="collection/fork"
+           data-postman-collection-id="12959542-c8142d51-e97c-46b6-bd77-52bb66712c9a"
+           data-postman-utm-medium="agent-mode-button"
+           data-postman-utm-campaign="demo-page">
+      </div>
+    </div>
+
+    <pre><code><span class="comment">&lt;!-- Fork Collection button --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"postman-button"</span>
+     <span class="attr">data-postman-action</span>=<span class="val">"collection/fork"</span>
+     <span class="attr">data-postman-collection-id</span>=<span class="val">"12959542-c8142d51-e97c-46b6-bd77-52bb66712c9a"</span>
+     <span class="attr">data-postman-utm-medium</span>=<span class="val">"agent-mode-button"</span>
+     <span class="attr">data-postman-utm-campaign</span>=<span class="val">"api-docs"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+  </section>
+
+  <!-- ── Multiple Buttons ──────────────────────────────────────── -->
+  <section>
+    <h2>Multiple Buttons</h2>
+    <p>Place as many buttons as you want on a single page. Each reads its own <code>data-*</code> attributes independently.</p>
+
+    <div class="example" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+      <div class="postman-button"
+           data-postman-action="agent/prompt"
+           data-postman-agent-prompt="Explain the OpenAI Chat Completions API and show me example requests"
+           data-postman-utm-medium="agent-mode-button">
+      </div>
+      <div class="postman-button"
+           data-postman-action="collection/fork"
+           data-postman-collection-id="12959542-c8142d51-e97c-46b6-bd77-52bb66712c9a"
+           data-postman-utm-medium="agent-mode-button">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Configuration Reference ───────────────────────────────── -->
+  <section>
+    <h2>Configuration Reference</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>data-postman-action</code></td>
+          <td>Yes</td>
+          <td>—</td>
+          <td><code>agent/prompt</code> or <code>collection/fork</code></td>
+        </tr>
+        <tr>
+          <td><code>data-postman-agent-prompt</code></td>
+          <td>Agent mode</td>
+          <td>—</td>
+          <td>Plain text prompt (auto Base64-encoded)</td>
+        </tr>
+        <tr>
+          <td><code>data-postman-auto-send</code></td>
+          <td>No</td>
+          <td><code>false</code></td>
+          <td>Auto-send the prompt on load</td>
+        </tr>
+        <tr>
+          <td><code>data-postman-collection-id</code></td>
+          <td>Fork mode</td>
+          <td>—</td>
+          <td>Public collection UID to fork</td>
+        </tr>
+        <tr>
+          <td><code>data-postman-utm-medium</code></td>
+          <td>Yes</td>
+          <td>—</td>
+          <td>UTM medium for analytics (e.g. <code>agent-mode-button</code>)</td>
+        </tr>
+        <tr>
+          <td><code>data-postman-utm-campaign</code></td>
+          <td>No</td>
+          <td><code>postman-button</code></td>
+          <td>UTM campaign name for analytics</td>
+        </tr>
+        <tr>
+          <td><code>data-postman-button-label</code></td>
+          <td>No</td>
+          <td>Auto</td>
+          <td>Override the button label text</td>
+        </tr>
+        <tr>
+          <td><code>data-postman-button-theme</code></td>
+          <td>No</td>
+          <td><code>dark</code></td>
+          <td><code>dark</code> (orange) or <code>light</code> (white)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Widget script (loaded once) -->
+  <script src="../dist/postman-button.js" defer></script>
+</body>
+</html>

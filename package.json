@@ -1,0 +1,17 @@
+{
+  "name": "postman-button",
+  "version": "1.0.0",
+  "description": "Embeddable Postman Button widget for Agent Mode and Collection Fork",
+  "main": "dist/postman-button.js",
+  "scripts": {
+    "build": "esbuild src/postman-button.js --bundle --minify --outfile=dist/postman-button.js --format=iife --target=es2017",
+    "build:watch": "esbuild src/postman-button.js --bundle --minify --outfile=dist/postman-button.js --format=iife --target=es2017 --watch",
+    "serve": "serve . -l 3000",
+    "dev": "npm run build && serve . -l 3000"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "serve": "^14.2.6"
+  },
+  "license": "MIT"
+}

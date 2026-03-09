@@ -59,10 +59,10 @@
     }
   }
 
-  // ── Utility: Get page path for utm_content ─────────────────────────
+  // ── Utility: Get full page URL for utm_content ─────────────────────
   function getUtmContent() {
     try {
-      return window.location.pathname || '/';
+      return window.location.href || '/';
     } catch (e) {
       return '/';
     }

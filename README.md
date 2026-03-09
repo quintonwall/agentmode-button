@@ -59,13 +59,13 @@ Every button click includes UTM parameters in the destination URL so you can tra
 | `utm_source` | Embedding page hostname (e.g., `myblog.com`) | Auto-detected from `window.location.hostname` |
 | `utm_medium` | `agent-mode-button` | Hardcoded by the widget (not configurable) |
 | `utm_campaign` | Your value via `data-postman-utm-campaign` | Configurable (default: `postman-button`) |
-| `utm_content` | Page path (e.g., `/blog/api-tutorial`) | Auto-detected from `window.location.pathname` (opt out with `data-postman-utm-content="false"`) |
+| `utm_content` | Full page URL (e.g., `https://myblog.com/blog/api-tutorial`) | Auto-detected from `window.location.href` (opt out with `data-postman-utm-content="false"`) |
 
 **Example generated URL:**
 ```
 https://go.postman.co/redirect/workspace?agentPrompt=QnVpbGQg...&sideView=agentMode&autoSend=false
   &utm_source=myblog.com&utm_medium=agent-mode-button&utm_campaign=api-tutorial
-  &utm_content=/blog/api-tutorial
+  &utm_content=https%3A%2F%2Fmyblog.com%2Fblog%2Fapi-tutorial
 ```
 
 ### Tracking Usage in Google Analytics
@@ -75,14 +75,14 @@ To see where your buttons are embedded and how they're performing:
 - **All button traffic:** Filter by `utm_medium = agent-mode-button` to see all clicks from embedded buttons across every site.
 - **By campaign:** Use `utm_campaign` to distinguish between different tutorials or pages. For example, set `data-postman-utm-campaign="stripe-tutorial"` on one page and `data-postman-utm-campaign="openai-quickstart"` on another.
 - **By host site:** `utm_source` tells you which domain the button was embedded on (e.g., `myblog.com` vs `dev.to`).
-- **By page:** `utm_content` captures the specific page path (e.g., `/blog/api-tutorial`), so you can see exactly which pages drive the most clicks — even across the same domain.
+- **By page:** `utm_content` captures the full page URL (e.g., `https://myblog.com/blog/api-tutorial`), so you can see exactly which pages drive the most clicks.
 
 **Example:** To find all clicks from your Stripe tutorial embedded on `myblog.com`:
 ```
 utm_medium  = agent-mode-button
 utm_source  = myblog.com
 utm_campaign = stripe-tutorial
-utm_content = /tutorials/stripe-api
+utm_content = https://myblog.com/tutorials/stripe-api
 ```
 
 ## Theming

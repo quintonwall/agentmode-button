@@ -21,7 +21,6 @@ Opens Postman with a pre-filled prompt in Agent Mode:
 <div class="postman-button"
      data-postman-action="agent/prompt"
      data-postman-agent-prompt="Build a REST API for a todo app with CRUD endpoints"
-     data-postman-utm-medium="agent-mode-button"
      data-postman-utm-campaign="my-tutorial">
 </div>
 ```
@@ -34,7 +33,6 @@ Forks a public collection into the user's workspace:
 <div class="postman-button"
      data-postman-action="collection/fork"
      data-postman-collection-id="12959542-c8142d51-e97c-46b6-bd77-52bb66712c9a"
-     data-postman-utm-medium="agent-mode-button"
      data-postman-utm-campaign="api-docs">
 </div>
 ```
@@ -47,7 +45,6 @@ Forks a public collection into the user's workspace:
 | `data-postman-agent-prompt` | Yes (agent) | — | Plain text prompt (auto Base64-encoded by the widget) |
 | `data-postman-auto-send` | No | `"false"` | Auto-send the prompt when Postman opens |
 | `data-postman-collection-id` | Yes (fork) | — | Public collection UID to fork |
-| `data-postman-utm-medium` | Yes | — | UTM medium for analytics (e.g. `"agent-mode-button"`) |
 | `data-postman-utm-campaign` | No | `"postman-button"` | UTM campaign name for analytics |
 | `data-postman-utm-content` | No | Auto (page path) | Set to `"false"` to disable page path tracking |
 | `data-postman-button-label` | No | Auto | Override the default button label |
@@ -55,14 +52,14 @@ Forks a public collection into the user's workspace:
 
 ## UTM Analytics
 
-Every button click includes UTM parameters in the destination URL so you can track traffic in Google Analytics (or any UTM-aware analytics tool):
+Every button click includes UTM parameters in the destination URL so you can track traffic in Google Analytics (or any UTM-aware analytics tool). The widget auto-detects `utm_source`, `utm_medium`, and `utm_content` — you only configure `utm_campaign`.
 
 | UTM Parameter | Value | Source |
 |---|---|---|
-| `utm_source` | Embedding page hostname (e.g., `myblog.com`) | Auto-detected |
-| `utm_medium` | Your value via `data-postman-utm-medium` | Required |
+| `utm_source` | Embedding page hostname (e.g., `myblog.com`) | Auto-detected from `window.location.hostname` |
+| `utm_medium` | `agent-mode-button` | Hardcoded by the widget (not configurable) |
 | `utm_campaign` | Your value via `data-postman-utm-campaign` | Configurable (default: `postman-button`) |
-| `utm_content` | Page path (e.g., `/blog/api-tutorial`) | Auto-detected (opt out with `data-postman-utm-content="false"`) |
+| `utm_content` | Page path (e.g., `/blog/api-tutorial`) | Auto-detected from `window.location.pathname` (opt out with `data-postman-utm-content="false"`) |
 
 **Example generated URL:**
 ```
@@ -71,7 +68,22 @@ https://go.postman.co/redirect/workspace?agentPrompt=QnVpbGQg...&sideView=agentM
   &utm_content=/blog/api-tutorial
 ```
 
-To view traffic from embedded buttons, filter your Google Analytics by your `utm_medium` value.
+### Tracking Usage in Google Analytics
+
+To see where your buttons are embedded and how they're performing:
+
+- **All button traffic:** Filter by `utm_medium = agent-mode-button` to see all clicks from embedded buttons across every site.
+- **By campaign:** Use `utm_campaign` to distinguish between different tutorials or pages. For example, set `data-postman-utm-campaign="stripe-tutorial"` on one page and `data-postman-utm-campaign="openai-quickstart"` on another.
+- **By host site:** `utm_source` tells you which domain the button was embedded on (e.g., `myblog.com` vs `dev.to`).
+- **By page:** `utm_content` captures the specific page path (e.g., `/blog/api-tutorial`), so you can see exactly which pages drive the most clicks — even across the same domain.
+
+**Example:** To find all clicks from your Stripe tutorial embedded on `myblog.com`:
+```
+utm_medium  = agent-mode-button
+utm_source  = myblog.com
+utm_campaign = stripe-tutorial
+utm_content = /tutorials/stripe-api
+```
 
 ## Theming
 
@@ -79,8 +91,7 @@ To view traffic from embedded buttons, filter your Google Analytics by your `utm
 ```html
 <div class="postman-button"
      data-postman-action="agent/prompt"
-     data-postman-agent-prompt="Your prompt here"
-     data-postman-utm-medium="agent-mode-button">
+     data-postman-agent-prompt="Your prompt here">
 </div>
 ```
 
@@ -89,7 +100,6 @@ To view traffic from embedded buttons, filter your Google Analytics by your `utm
 <div class="postman-button"
      data-postman-action="agent/prompt"
      data-postman-agent-prompt="Your prompt here"
-     data-postman-utm-medium="agent-mode-button"
      data-postman-button-theme="light">
 </div>
 ```
@@ -101,14 +111,12 @@ Place as many buttons as you want on a single page. Each reads its own `data-*` 
 ```html
 <div class="postman-button"
      data-postman-action="agent/prompt"
-     data-postman-agent-prompt="Explore the GitHub API"
-     data-postman-utm-medium="agent-mode-button">
+     data-postman-agent-prompt="Explore the GitHub API">
 </div>
 
 <div class="postman-button"
      data-postman-action="collection/fork"
-     data-postman-collection-id="12345-abcde"
-     data-postman-utm-medium="agent-mode-button">
+     data-postman-collection-id="12345-abcde">
 </div>
 ```
 

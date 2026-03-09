@@ -14,6 +14,7 @@
   var AGENT_BASE_URL = 'https://go.postman.co/redirect/workspace';
   var FORK_BASE_URL = 'https://god.gw.postman.com/run-collection';
   var DEFAULT_UTM_CAMPAIGN = 'postman-button';
+  var UTM_MEDIUM = 'agent-mode-button';
 
   // Postman brand orange
   var POSTMAN_ORANGE = '#FF6C37';
@@ -98,7 +99,7 @@
       '&autoSend=' + autoSend +
       '&recentlyVisited=true' +
       '&utm_source=' + encodeURIComponent(getUtmSource()) +
-      '&utm_medium=' + encodeURIComponent(config.utmMedium) +
+      '&utm_medium=' + UTM_MEDIUM +
       '&utm_campaign=' + campaign +
       (config.utmContent !== 'false' ? '&utm_content=' + encodeURIComponent(getUtmContent()) : '');
   }
@@ -114,7 +115,7 @@
       '?action=collection%2Ffork' +
       '&source=rip_html' +
       '&utm_source=' + encodeURIComponent(getUtmSource()) +
-      '&utm_medium=' + encodeURIComponent(config.utmMedium) +
+      '&utm_medium=' + UTM_MEDIUM +
       '&utm_campaign=' + campaign +
       (config.utmContent !== 'false' ? '&utm_content=' + encodeURIComponent(getUtmContent()) : '');
   }
@@ -168,11 +169,6 @@
 
     if (!action) {
       console.warn('[PostmanButton] Missing data-postman-action on element:', container);
-      return;
-    }
-
-    if (!config.utmMedium) {
-      console.warn('[PostmanButton] Missing required data-postman-utm-medium on element:', container);
       return;
     }
 

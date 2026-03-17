@@ -10,7 +10,7 @@ Add the script tag once per page, then drop in as many button `<div>`s as you ne
 
 ```html
 <!-- Load the widget (once per page) -->
-<script src="https://your-cdn.com/postman-button.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/quintonwall/agentmode-button@v1.0/src/postman-button.js" defer></script>
 ```
 
 ### Agent Mode Button

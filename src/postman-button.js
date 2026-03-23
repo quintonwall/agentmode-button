@@ -180,7 +180,7 @@
         return;
       }
       url = buildAgentUrl(config);
-      defaultLabel = 'Open in Postman Agent';
+      defaultLabel = 'Try in Agent Mode';
     } else if (action === ACTIONS.COLLECTION_FORK) {
       if (!config.collectionId) {
         console.warn('[PostmanButton] Missing data-postman-collection-id for collection/fork action');

@@ -217,6 +217,7 @@
     });
 
     container.appendChild(anchor);
+    container.appendChild(document.createElement('br'));
     container.setAttribute('data-postman-rendered', 'true');
   }
 
